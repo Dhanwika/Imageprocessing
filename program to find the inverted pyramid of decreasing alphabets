@@ -1,0 +1,16 @@
+depth = 6
+for i in range(depth, 0, -1):
+    n = i
+    for j in range(0, rows-i):
+        print(end=" ")
+    for j in range(0, i):
+        print(chr(64 + i), end=' ')
+    print()
+    
+OUTPUT:
+F F F F F F 
+E E E E E 
+ D D D D 
+  C C C 
+   B B 
+    A 
