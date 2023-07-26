@@ -1,0 +1,306 @@
+
+17. Use PIL and os library to implement the following
+Changing File type (Extension)
+List all the files in the directory
+Looping over the image files
+Creating new Directory using OS library and saving the images in it
+Creating new multiple Directories using OS library
+Convert  the image in modes PIL
+Create a program  to enlist the images which is stored in folder, convert it to grayscale, rotate all the images and save it to new directory with new filename
+
+
+import os
+
+# Original file path
+original_file = "D:\damaged image.jpg"
+
+# New file extension
+new_extension = ".png"
+
+# Change the file extension
+new_file = os.path.splitext(original_file)[0] + new_extension
+
+# Rename the file
+os.rename(original_file, new_file)
+
+# Print the updated file name
+print("File renamed to:", new_file)
+
+
+
+#import os module
+import os
+path='D:/'
+
+
+#Get all the folders in the directory
+dir_list=os.listdir(path)
+
+#print all the folder in the path
+
+    
+print(" The list of folders in the path","'",path,"'are:\n",dir_list)
+
+import os
+import glob
+
+# Directory containing the image files
+directory = "D:/"
+
+# Supported image file extensions
+supported_extensions = ["jpg", "jpeg", "png"]
+
+# Get a list of image files in the directory
+image_files = glob.glob(os.path.join(directory, "*.*"))
+
+# Filter only the image files with supported extensions
+image_files = [file for file in image_files if file.lower().endswith(tuple(supported_extensions))]
+
+# Loop over the image files
+for file in image_files:
+    # Perform operations on each image file
+    # For example, you can read the image using cv2.imread(file) and process it
+    # ...
+    print("Processing:", file)
+
+# Optional: Print the total number of image files found
+print("Total image files:", len(image_files))
+
+
+import os
+import cv2
+
+# Directory path for the new directory
+new_directory = "D:\mydir"
+
+# Create the new directory
+os.makedirs(new_directory, exist_ok=True)
+
+# Process and save images
+image_files = ["result_out.jpg", "result.jpg", "abraham.jpg"]
+
+for file in image_files:
+    # Read the image
+    image = cv2.imread(file)
+
+    # Perform operations on the image (e.g., processing, modifications)
+17. Use PIL and os library to implement the following
+Changing File type (Extension)
+List all the files in the directory
+Looping over the image files
+Creating new Directory using OS library and saving the images in it
+Creating new multiple Directories using OS library
+Convert  the image in modes PIL
+Create a program  to enlist the images which is stored in folder, convert it to grayscale, rotate all the images and save it to new directory with new filename
+
+
+import os
+
+# Original file path
+original_file = "D:\damaged image.jpg"
+
+# New file extension
+new_extension = ".png"
+
+# Change the file extension
+new_file = os.path.splitext(original_file)[0] + new_extension
+
+# Rename the file
+os.rename(original_file, new_file)
+
+# Print the updated file name
+print("File renamed to:", new_file)
+
+
+
+#import os module
+import os
+path='D:/'
+
+
+#Get all the folders in the directory
+dir_list=os.listdir(path)
+
+#print all the folder in the path
+
+    
+print(" The list of folders in the path","'",path,"'are:\n",dir_list)
+
+import os
+import glob
+
+# Directory containing the image files
+directory = "D:/"
+
+# Supported image file extensions
+supported_extensions = ["jpg", "jpeg", "png"]
+
+# Get a list of image files in the directory
+image_files = glob.glob(os.path.join(directory, "*.*"))
+
+# Filter only the image files with supported extensions
+image_files = [file for file in image_files if file.lower().endswith(tuple(supported_extensions))]
+
+# Loop over the image files
+for file in image_files:
+    # Perform operations on each image file
+    # For example, you can read the image using cv2.imread(file) and process it
+    # ...
+    print("Processing:", file)
+
+# Optional: Print the total number of image files found
+print("Total image files:", len(image_files))
+
+
+import os
+import cv2
+
+# Directory path for the new directory
+new_directory = "D:\mydir"
+
+# Create the new directory
+os.makedirs(new_directory, exist_ok=True)
+
+# Process and save images
+image_files = ["result_out.jpg", "result.jpg", "abraham.jpg"]
+
+for file in image_files:
+    # Read the image
+    image = cv2.imread(file)
+
+    # Perform operations on the image (e.g., processing, modifications)
+
+    # Save the image to the new directory
+    file_name = os.path.basename(file)
+    save_path = os.path.join(new_directory, file_name)
+    cv2.imwrite(save_path, image)
+
+    print("Image saved:", save_path)
+
+
+import os
+
+# List of directory names
+directories = ['dir1', 'dir2', 'dir3']
+
+# Parent directory path
+parent_directory = 'D:/'
+
+# Create the directories
+for directory in directories:
+    directory_path = os.path.join(parent_directory, directory)
+    os.makedirs(directory_path, exist_ok=True)
+    print("Created directory:", directory_path)
+
+
+from PIL import Image
+
+# Open the image
+image = Image.open("D:/R.jfif")
+
+# Convert the image to different modes
+grayscale_image = image.convert("L")
+rgb_image = image.convert("RGB")
+rgba_image = image.convert("RGBA")
+binary_image = image.convert("1")
+
+#Display the images
+grayscale_image.show()
+rgb_image.show()
+rgba_image.show()
+binary_image.show()
+
+# Save the converted images
+grayscale_image.save("D:/grayscale_image.jpg")
+rgb_image.save("D:/rgb_image.jpg")
+rgba_image.save("D:/rgba_image.png")
+binary_image.save("D:/binary_image.png")
+
+
+
+import os
+from PIL import Image
+
+# Folder path containing the images
+folder_path = "D:/"
+
+# New folder path for saving the modified images
+new_folder_path = "D:/mydir"
+
+# Create the new folder
+os.makedirs(new_folder_path, exist_ok=True)
+
+# List all image files in the folder
+image_files = [file for file in os.listdir(folder_path) if file.lower().endswith((".jpg", ".jpeg", ".png"))]
+
+# Process and save the images
+for file in image_files:
+    # Open the image
+    image_path = os.path.join(folder_path, file)
+    image = Image.open(image_path)
+
+    # Convert the image to grayscale
+    grayscale_image = image.convert("L")
+
+    # Rotate the image
+    rotated_image = grayscale_image.rotate(90)  # Rotate by 90 degrees (counter-clockwise)
+
+    # Save the rotated image to the new folder with a new filename
+    new_filename = "rotated_" + file
+    new_image_path = os.path.join(new_folder_path, new_filename)
+    rotated_image.save(new_image_path)
+
+    print("Image processed and saved:", new_image_path)￼Enter
+    # Save the image to the new directory
+    file_name = os.path.basename(file)
+    save_path = os.path.join(new_directory, file_name)
+    cv2.imwrite(save_path, image)
+
+    print("Image saved:", save_path)
+
+
+import os
+
+# List of directory names
+directories = ['dir1', 'dir2', 'dir3']
+
+# Parent directory path
+parent_directory = 'D:/'
+
+# Create the directories
+for directory in directories:
+    directory_path = os.path.join(parent_directory, directory)
+    os.makedirs(directory_path, exist_ok=True)
+    print("Created directory:", directory_path)
+
+
+from PIL import Image
+
+# Open the image
+= Image.open("D:/R.jfif")
+
+# Convert the image to different modes
+grayscale_image = image.convert("L")
+rgb_image = image.convert("RGB")
+rgba_image = image.convert("RGBA")
+binary_image = image.convert("1")
+
+#Display the images
+grayscale_image.show()
+rgb_image.show()
+rgba_image.show()
+binary_image.show()
+
+# Save the converted images
+grayscale_image.save("D:/grayscale_image.jpg")
+rgb_image.save("D:/rgb_image.jpg")
+rgba_image.save("D:/rgba_image.png")
+binary_image.save("D:/binary_image.png")
+
+
+
+import os
+from PIL import Image
+
+# Folder path containing the images
+folder_path = "D:/"
